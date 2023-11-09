@@ -3,7 +3,7 @@
 ## Prerequisites
 
 Before running the script `main.py`, ensure that you have created the following directory structure in the project root:
-
+```
 project-root/
 ├── source/
 │ └── res/
@@ -12,7 +12,7 @@ project-root/
 │ ├── google_dataset.csv
 │ └── website_dataset.csv
 └── main.py
-
+```
 ## Setup
 
 Follow these steps to prepare the environment for running the script:
