@@ -1,4 +1,4 @@
-# Project Title
+# Big data - Exadel
 
 A brief description of what this project does and who it's for.
 
