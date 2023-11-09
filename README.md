@@ -1,7 +1,5 @@
 # Big data - Exadel
 
-A brief description of what this project does and who it's for.
-
 ## Prerequisites
 
 Before running the script `main.py`, ensure that you have created the following directory structure in the project root:
