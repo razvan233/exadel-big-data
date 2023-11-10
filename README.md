@@ -7,7 +7,9 @@ Before running the script `main.py`, ensure that you have created the following 
 project-root/
 ├── source/
 │ └── res/
-│   └── results.csv
+│   └── result1.csv
+│   └── result2.csv
+│   └── result3.csv
 │ ├── facebook_dataset.csv
 │ ├── google_dataset.csv
 │ └── website_dataset.csv
@@ -30,3 +32,18 @@ With the datasets in place and the directory structure set up, you can run the s
 
 ```sh
 python main.py
+```
+
+## Test different solutions for strings similarity:
+
+1.  Using `thefuzz` library.
+
+```
+Execution time: 00:00:02.529302
+```
+
+2. Using `levenshtein_distance` from `Levenshtein` library.
+
+```
+Execution time: 00:00:02.599366
+```
