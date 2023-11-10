@@ -22,6 +22,12 @@ def is_valid_domain(domain):
         return False 
     return bool(domain_pattern.match(domain))
 
+def standardize_phone(phone):
+    phone = str(phone).strip().replace(r'[^\w.]+', '').replace('+', '')
+    if '.' in phone:
+        phone = phone.split('.')[0]
+    return phone
+
 # Cleaning Google Dataset
 def clean_google_dataset(df: pd.DataFrame, drop_where_no_phone: bool = False):
     
@@ -39,8 +45,7 @@ def clean_google_dataset(df: pd.DataFrame, drop_where_no_phone: bool = False):
     df = df[standard_columns]
     if drop_where_no_phone:
         df = df.dropna(subset=['Phone'])
-    df['Phone'] = df['Phone'].apply(lambda ph: str(ph).strip())
-    df['Phone'] = df['Phone'].str.replace('.0', '', regex=False)
+    df['Phone'] = df['Phone'].apply(standardize_phone)
     df['is_valid_domain'] = df['Domain'].apply(is_valid_domain)
     df_valid = df[df['is_valid_domain']]
     df = df_valid.drop(columns=['is_valid_domain'])
