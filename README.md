@@ -5,7 +5,7 @@
 Before running the script `main.py`, ensure that you have created the following directory structure in the project root:
 ```
 project-root/
-├── source/
+├── data/
 │ └── res/
 │   └── result1.csv
 │   └── result2.csv
@@ -19,7 +19,7 @@ project-root/
 
 Follow these steps to prepare the environment for running the script:
 
-1. Create a folder named `source` in the project root.
+1. Create a folder named `data` in the project root.
 2. Place the following datasets into the `data` folder:
    - `facebook_dataset.csv`
    - `google_dataset.csv`
