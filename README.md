@@ -40,7 +40,7 @@ For the final merging step between the Google dataset and the previously merged 
 
 ## Hash Function and Bucketing for Company Name Comparison
 
-1. Hash Function: `enhanced_hash_name`
+### Hash Function: `enhanced_hash_name`
 
 The `enhanced_hash_name` function is crucial for categorizing company names into buckets to optimize the comparison process. This function lowers the computational complexity by reducing the number of comparisons needed.
 
@@ -48,7 +48,7 @@ The `enhanced_hash_name` function is crucial for categorizing company names into
 
 - **Example**: For a company name "Exadel", the hash would be "e6", indicating the first letter 'e' and the name length '6'.
 
-2. Bucket Creation and Comparison: `compare_names`
+### Bucket Creation and Comparison: `compare_names`
 
 The `compare_names` function is designed to operate on a bucket of names, using the hashes created by `enhanced_hash_name`. It identifies similar names within each bucket, reducing the scope of comparisons to potentially similar names only.
 
