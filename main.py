@@ -22,18 +22,34 @@ def load_or_clean_dataset(raw_file_path, cleaned_file_path, delimiter, clean_fun
         cleaned_df.to_csv(cleaned_file_path, index=False, encoding='utf-8')
         return cleaned_df
 
-def calc_stats(df: pd.DataFrame):
-    total_companies = len(df['CompanyName'])
-    unique_companies = df['CompanyName'].nunique()
+def calc_stats(merged_df: pd.DataFrame,raw_dfs: list[pd.DataFrame]=[], show_raw_dfs: bool = False):
+    total_companies = len(merged_df['CompanyName'])
+    unique_companies = merged_df['CompanyName'].nunique()
     num_duplicates = total_companies - unique_companies
 
     percent_unique = (unique_companies / total_companies) * 100
     percent_duplicates = (num_duplicates / total_companies) * 100
+    if show_raw_dfs:
+        total_companies_raw = 0
+        unique_companies_raw = 0
+        num_duplicates_raw = 0
+        for raw_df in raw_dfs:
+            total_companies_raw += len(raw_df['CompanyName'])
+            unique_companies_raw += raw_df['CompanyName'].nunique()
+        num_duplicates_raw = total_companies_raw - unique_companies_raw
+        percent_unique_raw = (unique_companies / total_companies) * 100
+        percent_duplicates_raw = (num_duplicates / total_companies) * 100
+        
+        print(f"Total number of company entries: {total_companies_raw}")
+        print(f"Number of unique companies: {unique_companies_raw} ({percent_unique_raw:.2f}% of total)")
+        print(f"Number of duplicate company entries: {num_duplicates_raw} ({percent_duplicates_raw:.2f}% of total)\n")
+        print('\nStatistics before Levenshtein search:\n')
     
     print(f"Total number of company entries: {total_companies}")
     print(f"Number of unique companies: {unique_companies} ({percent_unique:.2f}% of total)")
     print(f"Number of duplicate company entries: {num_duplicates} ({percent_duplicates:.2f}% of total)")
-
+    
+    
 if __name__ == '__main__':
     # Load or clean the datasets
     facebook_cleaned_df = load_or_clean_dataset(
@@ -74,8 +90,9 @@ if __name__ == '__main__':
         merged_and_no_company_name_duplicates_facebook_website_data, google_cleaned_df, MERGED_FB_WEB_GOOGLE_DATA_FILENAME, REMOVE_DUPLICATES_FB_WEB_GOOGLE_BY)
     
     start_time = datetime.datetime.now()
-    print('\nStatistics before Levenshtein search:\n')
-    calc_stats(facebook_website_google_merged_data)
+    
+    print('\nStatistics before merging and duplicates removed:')
+    calc_stats(facebook_website_google_merged_data, raw_dfs=[facebook_cleaned_df, website_cleaned_df, google_cleaned_df], show_raw_dfs=True)
     
     merged_and_no_company_name_duplicates_facebook_website_data = remove_duplicate_company_names(
         facebook_website_google_merged_data, threshold=.4, group_data=False)
