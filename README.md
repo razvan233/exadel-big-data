@@ -56,15 +56,15 @@ The `compare_names` function is designed to operate on a bucket of names, using 
 
 - **Efficiency**: By only comparing names within the same bucket, `compare_names` significantly cuts down on the number of comparisons, especially in large datasets. This targeted approach makes the process of finding similar or duplicate names much more efficient.
 
-### Efficiency Comparison
+## Efficiency Comparison
 
-#### With Hashing and Bucketing
+### With Hashing and Bucketing
 
 - The use of `enhanced_hash_name` and `compare_names` significantly reduces computational complexity.
 - Hashing categorizes company names into buckets based on their characteristics, reducing the number of comparisons needed.
 - The `compare_names` function only compares names within the same bucket, which is much more efficient for large datasets.
 
-#### Without Hashing and Bucketing
+### Without Hashing and Bucketing
 
 - If hashing and bucketing were not used, the process would involve comparing each company name with every other name in the dataset.
 - This approach leads to a quadratic complexity, O(n²), where 'n' is the number of names. For large datasets, this can become computationally infeasible.
@@ -73,13 +73,13 @@ The `compare_names` function is designed to operate on a bucket of names, using 
 
 ## Test different solutions for strings similarity:
 
-1.  Using `thefuzz` library, only for the first merging after comparing multiple tests on execution time.
+###  Using `thefuzz` library, only for the first merging after comparing multiple tests on execution time.
 
 ```
 Execution time: 00:00:02.529302
 ```
 
-2. Using `levenshtein_distance` from `Levenshtein` library.
+### Using `levenshtein_distance` from `Levenshtein` library.
 
 ```
 Execution time Levenshtein for websites and facebook: 00:00:02.439366
