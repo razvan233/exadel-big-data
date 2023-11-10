@@ -79,11 +79,14 @@ if __name__ == '__main__':
     
     merged_and_no_company_name_duplicates_facebook_website_data = remove_duplicate_company_names(
         facebook_website_google_merged_data, threshold=.4, group_data=False)
-    print('\nStatistics after Levenshtein search:\n')
-    calc_stats(merged_and_no_company_name_duplicates_facebook_website_data)
+    
+    
     end_time = datetime.datetime.now()
     elapsed_time = end_time - start_time
     print(f"\nExecution time Levenshtein all 3 datasets: {elapsed_time}")
+    
+    print('\nStatistics after Levenshtein search:\n')
+    calc_stats(merged_and_no_company_name_duplicates_facebook_website_data)
     
     
     
