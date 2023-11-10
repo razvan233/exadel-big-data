@@ -92,3 +92,41 @@ Execution time: 00:00:02.529302
 Execution time Levenshtein for websites and facebook: 00:00:02.439366
 Execution time Levenshtein for first merged dataset and google dataset: 0:00:17.134709
 ```
+
+## Final Step: Statistics Calculation
+
+The last stage of the `main.py` script involves calculating and displaying important statistics. This step is designed to provide a clear overview of the data processing results, highlighting the effectiveness of the merging, cleaning, and duplicate removal processes.
+
+### Key Metrics Included:
+
+1. **Total Number of Company Entries**: The aggregate count of company entries across all datasets, giving an initial size of the data.
+2. **Number of Unique Companies**: Shows the count of distinct company entries, offering insight into the diversity of the data.
+3. **Number of Duplicate Company Entries**: Indicates the number of redundant entries found across datasets, underscoring the efficiency of the duplicate removal process.
+
+
+```
+Statistics before merging and duplicates removed:
+
+   Total number of company entries: 424772
+   Number of unique companies: 417967 (93.57% of total)
+   Number of duplicate company entries: 6805 (6.43% of total)
+
+Statistics before Levenshtein search:
+
+   Total number of company entries: 317805
+   Number of unique companies: 297364 (93.57% of total)
+   Number of duplicate company entries: 20441 (6.43% of total)
+
+Statistics after Levenshtein search:
+
+   Total number of company entries: 127867
+   Number of unique companies: 123865 (96.87% of total)
+   Number of duplicate company entries: 4002 (3.13% of total)
+```
+
+### Purpose:
+
+- **Transparency**: By presenting these statistics, we can have a transparent view of the data’s transformation from its original state to its final, refined form.
+- **Performance Assessment**: These metrics allow for an evaluation of the script’s performance, particularly in terms of its effectiveness in identifying and removing duplicates.
+- **Data Quality Improvement**: The statistics highlight the enhancement in data quality, crucial for subsequent data analysis or machine learning tasks.
+
