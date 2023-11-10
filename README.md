@@ -7,12 +7,19 @@ Before running the script `main.py`, ensure that you have created the following 
 project-root/
 ├── data/
 │ └── res/
-│   └── result1.csv
-│   └── result2.csv
-│   └── result3.csv
+│   └── cleaned_standardized_google_dataset.csv
+│   └── cleaned_standardized_facebook_dataset.csv
+│   └── cleaned_standardized_website_dataset.csv
+│   └── merged_facebook_website_dataset.csv
+│   └── merged_facebook_website_google_dataset.csv
+│   └── merged_and_no_company_name_duplicates_facebook_website_dataset.csv
+│   └── merged_and_no_company_name_duplicates_facebook_website_google_dataset.csv
 │ ├── facebook_dataset.csv
 │ ├── google_dataset.csv
 │ └── website_dataset.csv
+└── .gitignore
+└── standardized_data.py
+└── merge_data.py
 └── main.py
 ```
 ## Setup
