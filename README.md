@@ -34,20 +34,6 @@ With the datasets in place and the directory structure set up, you can run the s
 python main.py
 ```
 
-## Test different solutions for strings similarity:
-
-1.  Using `thefuzz` library.
-
-```
-Execution time: 00:00:02.529302
-```
-
-2. Using `levenshtein_distance` from `Levenshtein` library.
-
-```
-Execution time: 00:00:02.599366
-```
-
 ## Parallel Processing for Dataset Merging
 
 For the final merging step between the Google dataset and the previously merged datasets (Websites and Facebook), parallel processing is implemented to enhance performance. This approach allows for faster processing of large datasets by utilizing multiple CPU cores. The function `remove_duplicate_company_names` implements parallel processing when the `group_data` parameter is set to `False`. This function uses Python's `multiprocessing` library to distribute the task across multiple processes, significantly speeding up the duplicate removal and merge process.
@@ -70,3 +56,32 @@ The `compare_names` function is designed to operate on a bucket of names, using 
 
 - **Efficiency**: By only comparing names within the same bucket, `compare_names` significantly cuts down on the number of comparisons, especially in large datasets. This targeted approach makes the process of finding similar or duplicate names much more efficient.
 
+### Efficiency Comparison
+
+#### With Hashing and Bucketing
+
+- The use of `enhanced_hash_name` and `compare_names` significantly reduces computational complexity.
+- Hashing categorizes company names into buckets based on their characteristics, reducing the number of comparisons needed.
+- The `compare_names` function only compares names within the same bucket, which is much more efficient for large datasets.
+
+#### Without Hashing and Bucketing
+
+- If hashing and bucketing were not used, the process would involve comparing each company name with every other name in the dataset.
+- This approach leads to a quadratic complexity, O(n²), where 'n' is the number of names. For large datasets, this can become computationally infeasible.
+- Without bucketing, the script would not benefit from the efficiencies of parallel processing, further increasing processing time.
+
+
+## Test different solutions for strings similarity:
+
+1.  Using `thefuzz` library, only for the first merging after comparing multiple tests on execution time.
+
+```
+Execution time: 00:00:02.529302
+```
+
+2. Using `levenshtein_distance` from `Levenshtein` library.
+
+```
+Execution time Levenshtein for websites and facebook: 00:00:02.439366
+Execution time Levenshtein for first merged dataset and google dataset: 0:00:17.134709
+```
