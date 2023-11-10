@@ -73,13 +73,13 @@ The `compare_names` function is designed to operate on a bucket of names, using 
 
 ## Test different solutions for strings similarity:
 
-###  Using `thefuzz` library, only for the first merging after comparing multiple tests on execution time.
+####  Using `thefuzz` library, only for the first merging after comparing multiple tests on execution time.
 
 ```
 Execution time: 00:00:02.529302
 ```
 
-### Using `levenshtein_distance` from `Levenshtein` library.
+#### Using `levenshtein_distance` from `Levenshtein` library.
 
 ```
 Execution time Levenshtein for websites and facebook: 00:00:02.439366
